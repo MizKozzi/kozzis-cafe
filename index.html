@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, 
+      intitial-scale=1.0">
+    
+      <title>Kozzi's Cafe</title>
+<link rel="manifest" href="mainfest.json">
+    <meta name="theme-color" content="#6b4a8b"
+      
+    <style> 
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #160b20;
+      }
+
+      .cafe-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      </style>
+    </head>
+
+      <body>
+      <video
+        class="cafe-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+      <source src="cafe-loop.mp4" type="video/mp4">
+      Your browser does not support video playback.
+      </video>
+        <script>
+          if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+              navigator.serviceWorker.register("./service-worker.js")
+              .then(() => {
+                console.log("Kozzi's Cafe service worker resigtered!");
+              })
+              .catch((error) => {
+                console.error("Service worker error", error);
+              });
+            });
+          }
+            </script>
+      </body>
+</html>
